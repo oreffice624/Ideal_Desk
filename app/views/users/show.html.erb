@@ -1,0 +1,137 @@
+<style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            .wrap {
+                background-color: #54B1E5;
+            }
+
+            .content {
+                width: 100%;
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 16px;
+                background-color: #fff;
+            }
+
+            .heading-lv1 {
+                font-size: 32px;
+                font-style: italic;
+            }
+
+            .heading-lv2 {
+                font-size: 24px;
+            }
+
+            .heading-lv3 {
+                font-size: 20px;
+            }
+
+            .heading-margin {
+                margin-top: 32px;
+            }
+
+            .text {
+                margin: 16px 0 0;
+                font-size: 16px;
+                line-height: 1.5;
+            }
+
+            .text-center {
+                text-align: center;
+            }
+
+            .profile-image {
+                margin: 16px 0 0;
+                text-align: center;
+            }
+
+            .profile-image img {
+                width: 150px;
+                height: auto;
+                border-radius: 50%;
+            }
+
+            a {
+                color: #3F82A8;
+            }
+
+            a:hover {
+                text-decoration: none;
+            }
+</style>
+
+<body class="wrap">
+        <div class="content">
+            <h1 class="heading-lv1 text-center">Profile</h1>
+            <figure class="profile-image">
+              <% if @user.profile_image.attached? %>
+                  <%= image_tag @user.profile_image, size: "200x200" %>
+                  <% else %>
+                  <%= image_tag 'no_image', size: "200x200" %>
+                  <% end %>
+                  </figure>
+          <h2 class="heading-lv2 heading-margin text-center"><%= @user.username %></h2>
+
+          <% if @user.id == current_user.id %>
+          <p class="text text-center"><%= @user.email %></p>
+          <p class="text text-center"><%= link_to "編集", edit_user_path(@user), class: "button is-primary" %></p>
+          <% end %>
+          <h3 class="heading-lv3 heading-margin text-center">Introduction</h3>
+          <p class="text text-center"><%= @user.profile %></p>
+
+        </div>
+</body>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-multiline">
+              <% @user.desks.each do |desk| %>
+
+               <div class="column is-4">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <%= link_to desk_path(desk) do %>
+                <%= image_tag desk.image, class: 'image_desk' %>
+                  <% end %>
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-content">
+                  <%= link_to desk_path(desk), class: "panel-block" do %>
+                    <span class="panel-icon">
+                      <i class="fas fa-book" aria-hidden="true"></i>
+                    </span>
+                    このデスクを見る
+                  <% end %>
+                  <% if @user.id == current_user.id %>
+                    <%= link_to edit_desk_path(desk), class: "panel-block" do %>
+                      <span class="panel-icon">
+                        <i class="fas fa-edit"></i>
+                      </span>
+                      このデスクを編集する
+                    <% end %>
+                    <%= link_to desk_path(desk), method: :delete, data: {confirm: "削除しますか？"}, class: "panel-block" do %>
+                      <span class="panel-icon">
+                        <i class="fas fa-trash"></i>
+                      </span>
+                      このデスクを削除する
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="content">
+                <time><%= desk.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

@@ -40,11 +40,18 @@
     <% if user_signed_in? %>
       <div id="navbarExampleTransparentExample" class="navbar-menu">
           <div class="navbar-item">
+            <%= link_to "Desk Lists", desks_path, class: "navbar-item button is warnig is -light" %>
+            </div>
+          <div class="navbar-item">
+            <%= link_to "New Post", new_desk_path, class: "navbar-item button is warnig is -light" %>
+          </div>
             <div class="navbar-end">
               <div class="navbar-item">
                 <div class="field is-grouped">
                   <p class="control">
-                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "button is-warning is-light" %>
+                    <%= link_to "Desker List", users_path, class: "button is-warning is-light" %>
+                    <%= link_to "My Page", user_path(current_user), class: "button is-warning is-light" %>
+                    <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "button is-warning is-light" %>
                   </p>
                 </div>
               </div>
@@ -53,17 +60,29 @@
     <% else %>
     <div id="navbarExampleTransparentExample" class="navbar-menu">
           <div class="navbar-item">
+            <div class="navbar-item">
+            <%= link_to "Desk Lists", desks_path, class: "navbar-item button is warnig is -light" %>
+            </div>
+
+            <div class="navbar-item">
+            <%= link_to "Desker List", users_path, class: "navbar-item button is warnig is -light" %>
+            </div>
+            </div>
+
+
             <div class="navbar-end">
               <div class="navbar-item">
                 <div class="field is-grouped">
                   <p class="control">
-                    <%= link_to "ログイン", new_user_session_path, class: "button is-warning is-light" %>
-                    <%= link_to "新規登録", new_user_registration_path, class: "button is-warning is-light" %>
-                     </p>
+                    <%= link_to "Login", new_user_session_path, class: "button is-warning is-light" %>
+                    <%= link_to "Register", new_user_registration_path, class: "button is-warning is-light" %>
+                  </p>
                 </div>
               </div>
             </div>
           </div>
+
+
 
 
     <% end %>

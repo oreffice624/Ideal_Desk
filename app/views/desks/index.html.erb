@@ -1,0 +1,56 @@
+<section class="hero is-success">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Desk Lists
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-multiline">
+      <% @desks.each do |desk| %>
+        <div class="column is-4">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <%= link_to desk_path(desk) do %>
+                  <% if desk.image.attached? %>
+                  <%= image_tag desk.image, size: "200x200" %>
+                  <% else %>
+                  <%= image_tag 'no_image', size: "200x200" %>
+                  <% end %>
+                <% end %>
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <figure class="image is-48x48">
+
+                    
+                    <%= image_tag desk.user.profile_image, class: 'image_desk' %>
+                  
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <div class="title"><%=link_to desk.user.username, user_path(desk.user) %></div>
+                </div>
+              </div>
+
+              <div class="content">
+                <time><%= desk.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新
+              </div>
+
+
+
+
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
