@@ -57,17 +57,43 @@
               <i class="fas fa-user" aria-hidden="true"></i>
             </span>
             <p class="detail-title-link "><%= @desk.user.username %> </p>
-            
-            
-            
-            <% @desk.tags.each do |tag| %>
-    <%= tag.name %>
-<% end %>
-          
-          
-          
+
+
+
+
+
+
+
+
+
+
+
           <% end %>
         </article>
+        <div class="card-content">
+            <div class="content average-score">
+              <div class="star-rating mb-2">
+
+                <div class="star-rating-front" style="width: <%= @desk.review_score_percentage %>%">★★★★★</div>
+                <div class="star-rating-back">★★★★★</div>
+              </div>
+              <div class="average-score-display ml-3 pt-2">
+
+                <%= @desk.avg_score %>点（<%= @desk.reviews.count %>件のレビュー）
+              </div>
+            </div>
+          </div>
+        
+
+
+        <%= render 'reviews/form', review: @review, desk: @desk %>
+      
+        </div>
+        
+
+
+          </div>
+        </div>
       </div>
     </div>
   </div>

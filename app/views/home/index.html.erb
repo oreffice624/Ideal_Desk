@@ -11,6 +11,9 @@
       </div>
       <div class="columns is-centered">
         <div class="column is-5">
+          <div class="row">
+          <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "button is-warning is-fullwidth", method: :post %>
+        </div>
           <br>
           <%= link_to "ログイン", new_user_session_path, class: "button is-warning is-fullwidth" %>
           <br>
@@ -20,7 +23,7 @@
     </div>
   </article>
   <br>
-  
+
   <div class="columns is-centered">
     <div class="column">
       <figure>
@@ -28,5 +31,8 @@
       </figure>
     </div>
   </div>
+  
+   
+ 
 </section>
 

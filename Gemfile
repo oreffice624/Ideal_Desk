@@ -62,14 +62,20 @@ gem "bulma-rails"
 
 
 gem "enum_help"
+gem 'rails-i18n'
 
 gem 'kaminari','~> 1.2.1'
-# gem 'webpacker',    '~> 5.0'
+
 
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+
+gem 'acts-as-taggable-on'
+
+gem 'cancancan'
+gem 'rails_admin'
 
 gem "net-smtp"
 gem "net-pop"

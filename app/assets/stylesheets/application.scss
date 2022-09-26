@@ -17,6 +17,13 @@
 
 @import "bulma";
 
+body {
+  min-height: 100vh;
+  color: white;
+  background-image: linear-gradient(to top, #37ecba 0%, #72afd3 100%);
+  font-family: sans-serif;
+}
+
 .notification:not(:last-child){
 	margin-bottom: 0;
 }
@@ -30,7 +37,17 @@
 	background-image: url(home-office.jpg);
 	background-repeat: no-repeat;
 	background-size: contain;
-	
+
 
 }
 
+
+.tag-box{
+    background-color: aquamarine;
+    display: inline;
+    border: 1px solid #000000;
+
+    a{
+        text-decoration: none;
+    }
+}

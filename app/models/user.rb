@@ -7,5 +7,12 @@ class User < ApplicationRecord
   has_many :desks, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
+  def self.guest
+    find_or_create_by!(username: 'guestuser' ,email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      username = "guestuser"
+    end
+  end
+
   validates :username, presence: true
 end
