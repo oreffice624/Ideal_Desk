@@ -4,6 +4,13 @@ class ReviewsController < ApplicationController
     @desk = Desk.find(params[:desk_id])
     @reviews = @desk.reviews
   end
+  
+  def show
+    @review = Review.find(params[:id])
+    @comment = Comment.new
+    #新着順で表示
+    @comments = @review.comments.order(created_at: :desc)
+  end
 
   def create
     @review = Review.new(review_params)

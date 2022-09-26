@@ -1,4 +1,4 @@
 class DeskTag < ApplicationRecord
- belongs_to :category
- belongs_to :desk
+ # belongs_to :tag
+ # belongs_to :desk
 end
