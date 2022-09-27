@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :desks do
     resources :reviews do
-      resources :comments
+      resources :comments, only: [:create, :destroy]
   end
 end
 end

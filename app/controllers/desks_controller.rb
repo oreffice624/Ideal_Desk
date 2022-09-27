@@ -3,42 +3,14 @@ class DesksController < ApplicationController
 
 
   def index
-    # @desks = Desk.all
-    # unless @desks.present?
-
-    # 検索の条件によって結果を変える
-      # if params[:search].present?
-      #   desks = Desk.desks_search(params[:search])
-      # elsif params[:desk_tag_id].present?
-      #   desks = @desk_tag.desks.order(created_at: :desc)
-      # elsif params[:tag_name].present? #タグの絞り込み
-      #   desks = Desk.tagged_with(params[:tag_name])
-      # elsif params[:q].present? #ransack検索
-      #   search = Desk.ransack(params[:q])
-      #   desks = search.result.page(params[:page])
-      # else #通常表示
-      #   desks = Desk.all.order(created_at: :desc)
-      # end
-
-      if params[:tag_name].present? #タグの絞り込み
+    if params[:tag_name].present? #タグの絞り込み
         desks = Desk.tagged_with(params[:tag_name])
-      elsif params[:q].present? #ransack検索
+    elsif params[:q].present? #ransack検索
         search = Desk.ransack(params[:q])
         desks = search.result.page(params[:page])
-      else #通常表示
+    else #通常表示
         desks = Desk.all.order(created_at: :desc)
-      end
-
-    # end
-
-    # #タグ絞り込み
-    # if params[:tag_name].present?
-    #   desks = Desk.tagged_with("#{params[:tag_name]}")
-    #   pp '----------'
-    #   pp desks
-    # end
-
-    # @desk_tag_lists = DeskTag.all
+    end
     @desks = Kaminari.paginate_array(desks).page(params[:page]).per(10)
   end
 

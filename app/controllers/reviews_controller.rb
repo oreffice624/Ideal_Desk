@@ -1,10 +1,10 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!, only: [:create]
+  before_action :authenticate_user!, only: [:create, :show]
   def index
     @desk = Desk.find(params[:desk_id])
     @reviews = @desk.reviews
   end
-  
+
   def show
     @review = Review.find(params[:id])
     @comment = Comment.new

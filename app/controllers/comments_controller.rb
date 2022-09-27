@@ -4,8 +4,11 @@ class CommentsController < ApplicationController
       #投稿に紐づいたコメントを作成
       @comment = @review.comments.build(comment_params)
       @comment.user_id = current_user.id
-      @comment.save
-      render :index
+      if @comment.save
+      redirect_back(fallback_location: root_path)  #コメント送信後は、一つ前のページへリダイレクトさせる。
+      else
+      redirect_back(fallback_location: root_path)  #同上
+      end
   end
 
     def destroy

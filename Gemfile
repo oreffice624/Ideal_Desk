@@ -74,6 +74,8 @@ end
 
 gem 'acts-as-taggable-on'
 
+gem 'faker'
+
 gem 'cancancan'
 gem 'rails_admin'
 
