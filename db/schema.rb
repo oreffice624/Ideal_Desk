@@ -48,16 +48,6 @@ ActiveRecord::Schema.define(version: 2022_09_26_090734) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "desk_tags", force: :cascade do |t|
-    t.integer "desk_id", null: false
-    t.integer "desk_tag_name_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index "\"desk_tag_name\"", name: "index_desk_tags_on_desk_tag_name", unique: true
-    t.index ["desk_id"], name: "index_desk_tags_on_desk_id"
-    t.index ["desk_tag_name_id"], name: "index_desk_tags_on_desk_tag_name_id"
-  end
-
   create_table "desks", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
@@ -127,8 +117,6 @@ ActiveRecord::Schema.define(version: 2022_09_26_090734) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "desk_tags", "desk_tag_names"
-  add_foreign_key "desk_tags", "desks"
   add_foreign_key "reviews", "desks"
   add_foreign_key "reviews", "users"
   add_foreign_key "taggings", "tags"
