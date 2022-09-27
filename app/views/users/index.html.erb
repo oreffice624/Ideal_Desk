@@ -18,11 +18,7 @@
                   <div class="card-image">
                       <figure class="image is-4by3">
                         <%= link_to user_path(user) do %>
-                          <% if user.profile_image.attached? %>
-                          <%= image_tag user.profile_image, size: "200x200" %>
-                          <% else %>
-                          <%= image_tag 'no_image', size: "200x200" %>
-                          <% end %>
+                          <%= image_tag user.get_profile_image, size: "200x200" %>
                         <% end %>
                       </figure>
                    </div>
