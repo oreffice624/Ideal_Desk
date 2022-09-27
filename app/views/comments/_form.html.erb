@@ -1,6 +1,6 @@
 
 <!-- コメント入力フォーム ------------------------------------------------------------>
-<%= form_with(model: [review, comment], url: desk_reviews_path(@review) ) do |f| %>
+<%= form_with(model: [review, comment], url: desk_review_comments_path(desk, review), method: :post ) do |f| %>
     <%= f.text_area :content, class: "input-mysize" %>
     <%= f.submit "送信", class: "btn btn-outline-dark comment-submit float-right" %>
 <% end %>

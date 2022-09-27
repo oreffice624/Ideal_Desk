@@ -26,18 +26,18 @@
          <%= form_with model: @desk, local: true do |f| %>
           <div class="field">
             <%= f.label :title, "Title", class: "label" %>
-            <%= f.text_field :title, class: "input" %>
+            <%= f.text_field :title, class: "input",placeholder: 'デスクのタイトルを記入' %>
           </div>
 
           <div class="field">
             <%= f.label :body, "Consept", class: "label" %>
-            <%= f.text_area :body, class: "textarea" %>
+            <%= f.text_area :body, class: "textarea",placeholder: 'デスクのコンセプトを記入' %>
           </div>
 
 
           <div class="field">
             <%= f.label :tag_list,  class: "label" %>
-            <%= f.text_field :tag_list, value: @desk.tag_list.join(','), class: "input" %>
+            <%= f.text_field :tag_list, value: @desk.tag_list.join(','), class: "input",placeholder: 'デスクのタグを記入　例：Game,Creative,Art' %>
           </div>
 
           <div class="field">

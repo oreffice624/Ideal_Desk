@@ -63,7 +63,7 @@
                 <td><%= review.user.username %></td>
                 <td><%= review.score %></td>
                 <td><%= review.content %></td>
-                <td><%= link_to "コメントを見る", desk_review_path(@reviews, @desk), class: "button is-success" %></td>
+                <td><%= link_to "コメントを見る", desk_review_path(@desk, review), class: "button is-success" %></td>
 
                 <!--<td>レビュー更新ボタンとレビュー削除ボタン</td>-->
                 <!--<td>%= link_to "Edit", edit_desk_review_path(@reviews, @desk), class: "button is-success" %></td>-->

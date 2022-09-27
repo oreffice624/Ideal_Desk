@@ -6,6 +6,7 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    @desk = Desk.find(params[:desk_id])
     @review = Review.find(params[:id])
     @comment = Comment.new
     #新着順で表示

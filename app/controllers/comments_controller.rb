@@ -14,8 +14,9 @@ class CommentsController < ApplicationController
     def destroy
       @comment = Comment.find(params[:id])
       @comment.destroy
-      render :index
+      redirect_to request.referer
     end
+
 
     private
     def comment_params
