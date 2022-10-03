@@ -13,7 +13,7 @@
   <div class="container">
     <div class="columns is-multiline">
       <% @desks.each do |desk| %>
-      <%# byebug%>
+
         <div class="column is-4">
           <div class="card">
             <div class="card-image">
@@ -31,7 +31,7 @@
               <div class="media">
                 <div class="media-left">
                   <figure class="image is-48x48">
-                    <!--%= image_tag desk.user.profile_image, class: 'image_desk' %>-->
+                   
                   </figure>
                 </div>
                 <div class="media-content">
@@ -40,18 +40,13 @@
               </div>
 
 　　　　　　　<div class="content">
-　　　　　　　  
 
               <%= render 'desks/tag_list', tag_list: desk.tag_list %>
               </div>
-
-
               <div class="content">
                 <time><%= desk.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新
               </div>
-
-
-               <footer class="card-footer">
+            <footer class="card-footer">
               <%= link_to desk_reviews_path(desk), class: "button card-footer-item" do %>
                 レビューを見る
               <% end %>
@@ -59,11 +54,6 @@
                 レビューを書く
               <% end %>
             </footer>
-
-
-
-
-
             </div>
           </div>
         </div>

@@ -30,6 +30,10 @@ class DesksController < ApplicationController
 
     @desk.user_id=current_user.id
     if @desk.save
+       tags = Vision.get_image_data(@desk.image)
+    tags.each do |tag|
+      @desk.tags.create(name: tag)
+    end
       redirect_to desk_path(@desk), notice: "デスクを投稿しました。"
     else
       render :new

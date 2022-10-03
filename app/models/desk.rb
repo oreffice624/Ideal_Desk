@@ -2,12 +2,12 @@ class Desk < ApplicationRecord
   acts_as_taggable
   has_many :reviews, dependent: :destroy
   #has_many :tags, through: :desk_tag
-  #has_many :desk_tag 
+  #has_many :desk_tag
   belongs_to :user
   has_one_attached :image
   has_one_attached :profile_image
-  
 
+  
 
     with_options presence: true do
     validates :title
